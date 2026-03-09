@@ -1,77 +1,85 @@
-#  Data Preprocessing Pipeline – CSV Cleaner
+# Data Preprocessing Pipeline – CSV Normalization Utility
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+![Category](https://img.shields.io/badge/Category-Data%20Engineering-purple)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Mac%20%7C%20Linux-lightgrey)
-![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
-
- Lightweight CSV Cleaning Utility for Data Preprocessing
-A focused Python tool for cleaning and normalizing CSV datasets.
-Designed for preprocessing workflows in automation, analytics, and data pipelines.
-
----
 
 ## Overview
 
-This project implements a lightweight CSV data preprocessing utility designed for analytics and ETL workflows.
+This project demonstrates a lightweight CSV normalization tool designed to simulate a preprocessing stage in a data engineering pipeline.
 
-It normalizes structured datasets by:
+It converts whitespace-separated structured datasets into properly formatted comma-delimited CSV files suitable for analytics ingestion.
 
-- Removing empty rows
-- Trimming whitespace
-- Standardizing formatting
-- Preparing raw CSV files for downstream analysis
-
-This tool simulates a real-world data engineering preprocessing stage before ingestion into data warehouses, BI dashboards, or ML pipelines.
+The tool was tested using a subset of the UCI Bike Sharing dataset.
 
 ---
 
-## Architecture
+## Problem
 
-Raw CSV → Cleaning Module → Cleaned CSV → Analytics / ML / BI
-
-This utility acts as the transformation layer in a simplified ETL pipeline.
-
----
-
-## Features
-- Remove empty rows
-- Trim whitespace from fields
-- Normalize column headers
-- Preserve CSV structure
-- CLI-based execution
-- Lightweight and dependency-free (or specify if using pandas)
-
- ---
-
-## Example Use Case
-
-A marketing analytics team receives inconsistent CSV exports from multiple systems.
-This tool normalizes the data before loading into:
-
-- Power BI
-- Tableau
-- PostgreSQL
-- Pandas / Jupyter notebooks
+Real-world datasets are often exported with inconsistent delimiters (spaces, tabs, mixed formatting).  
+Downstream systems such as SQL databases, BI tools, and ML frameworks require strict comma-delimited CSV structure.
 
 ---
 
-## Installation
+## Solution
 
-git clone https://github.com/Cellous/python-csv-cleaner.git
-cd python-csv-cleaner
+This utility:
 
-## Usage
-
-python csv_cleaner.py input.csv output.csv
+- Converts whitespace-separated data to comma-delimited CSV
+- Preserves column structure
+- Ensures consistent formatting
+- Prepares structured datasets for ingestion into analytics systems
 
 ---
 
-## Future Improvements
+## Example Dataset
 
-- Add schema validation
-- Add logging layer
-- Add automated test coverage
-- Package as installable CLI tool
-- Integrate into Airflow DAG
+Dataset used: UCI Bike Sharing Dataset (subset)
+
+### Raw Format (Whitespace-Separated)
+1 1/1/2011 1 0 1 0 0 6 0 1 0.24 0.2879 0.81 0 3 13 16
+
+### Cleaned Output (Comma-Delimited)
+1,1/1/2011,1,0,1,0,0,6,0,1,0.24,0.2879,0.81,0,3,13,16
+
+---
+
+## Project Structure
+python-csv-cleaner/
+│
+├── csv_cleaner.py
+├── README.md
+├── LICENSE
+│
+└── examples/
+├── bike_raw_sample.csv
+└── bike_cleaned_sample.csv
+
+---
+
+## How To Run
+
+```bash
+python csv_cleaner.py input_file.csv output_file.csv
+
+```
+
+## Use Case
+This tool simulates the transformation layer in a simple ETL workflow:
+
+Raw Dataset
+↓
+Normalization
+↓
+Ready for:
+
+Pandas
+
+SQL ingestion
+
+Azure ML
+
+Power BI
+
+Analytics pipelines
